@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block title %} Submit Tickets Page {% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="container">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Ticket number</label>
+                <input type="text" class="form-control" name="number" readonly value={{ticketNumber}}>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Ticket status</label>
+                <select class="form-select" aria-label="Default select example" name="status">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Ticket priority</label>
+                <select class="form-select" aria-label="Default select example" name="priority">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Ticket description</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="3"></textarea>
+            </div>
+            <div>
+                <input type="submit" name="submit" />
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
