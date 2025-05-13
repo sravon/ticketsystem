@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block title %} Submit Tickets Page {% endblock %}
 {% block content %}
 <div class="container-fluid">
-    <div class="container">
+    <div class="container mx-auto w-50 p-4 bg-info mt-2">
         <form action="" method="post">
             {% csrf_token %}
             <div class="mb-3">
@@ -12,18 +12,18 @@
                 <label for="exampleFormControlInput1" class="form-label">Ticket status</label>
                 <select class="form-select" aria-label="Default select example" name="status">
                     <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option value="Open">Open</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Closed">Closed</option>
                 </select>
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Ticket priority</label>
                 <select class="form-select" aria-label="Default select example" name="priority">
                     <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option value="Low urgency">Low urgency</option>                    
+                    <option value="Medium urgency">Medium urgency</option>
+                    <option value="High urgency">High urgency</option>
                 </select>
             </div>
             <div class="mb-3">

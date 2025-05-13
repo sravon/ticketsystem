@@ -1,55 +1,28 @@
 {% extends "base.html" %} {% block title %} Home Page {% endblock %}
 {% block content %}
-<div class="container-fluid container">
+<div class="container-fluid container mx-auto w-50 p-4 bg-info mt-2">
     <form action="" method="post">
         {% csrf_token %}
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Enter ticket number" name="ticketNumber">
             <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
         </div>
-    </div>
-    <div>
-
-    </div>
-    <div>
+    </form>
     {% if listOfTickets %}
-        <p>listOfTickets</p>
-    {% endif %}
         <ul class="list-group list-group-horizontal">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-        </ul>
-        <ul class="list-group list-group-horizontal-sm">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-        </ul>
-        <ul class="list-group list-group-horizontal-md">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-        </ul>
-        <ul class="list-group list-group-horizontal-lg">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-        </ul>
-        <ul class="list-group list-group-horizontal-xl">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-        </ul>
-        <ul class="list-group list-group-horizontal-xxl">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
+            <li class="list-group-item" style="width: 200px;"><b>Ticket Number</b></li>
+            <li class="list-group-item" style="width: 200px;">Status</li>
+            <li class="list-group-item" style="width: 200px;">Priority</li>
+            <li class="list-group-item" style="width: 200px;">Description</li>
         </ul>
         {% for task in listOfTickets %}
-            <div>
-                <p>{{task.number}}</p>
-            </div>
+            <ul class="list-group list-group-horizontal">
+                <li class="list-group-item" style="width: 200px;">{{task.number}}</li>
+                <li class="list-group-item" style="width: 200px;">{{task.status}}</li>
+                <li class="list-group-item" style="width: 200px;">{{task.priority}}</li>
+                <li class="list-group-item" style="width: 200px;">{{task.description}}</li>
+            </ul>
         {% endfor %}
-    </div>
+    {% endif %}
 </div>
 {% endblock %}

@@ -15,4 +15,5 @@ urlpatterns = [
     path('submit-ticket', views.submitTickets),
     path('check-ticket-status', views.checkTicketsStatus),
     path('list-of-tickets', views.listOfTickets),
+    path('delete/<int:ticket_id>/', views.deleteTicket, name='delete_task'),
 ]

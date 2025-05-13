@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse
 import random
 
@@ -29,7 +29,7 @@ def submitTickets(request):
         # 💾 Optional: Save to database
         Tickets.objects.create(number=number, status=status, priority=priority,description=description)
 
-        return HttpResponse("Form submitted successfully!") 
+        return redirect('/list-of-tickets')
     return render(request, 'submitTickets.html', context)
 
 def checkTicketsStatus(request):  
@@ -47,3 +47,10 @@ def listOfTickets(request):
     tickets = Tickets.objects.all()
     context = {'tickets':tickets}  
     return render(request, 'listOfTickets.html', context)
+
+def deleteTicket(request, ticket_id):
+    task = get_object_or_404(Tickets, id=ticket_id)
+    if request.method == "POST":
+        task.delete()
+        return redirect('/list-of-tickets')  # redirect to your list view
+    return redirect('list-of-tickets', ticket_id=ticket_id)  # fallback
